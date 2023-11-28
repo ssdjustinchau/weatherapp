@@ -6,9 +6,12 @@ import android.os.Handler;
 import android.os.IBinder;
 
 import androidx.annotation.Nullable;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 public class ApiService extends Service {
+    //NOT USED. paste this to main activity since it is hard to make it separate class
     private Handler mHandler;
+    public WeatherModel weatherdata;
     // default interval for syncing data
     public static final long DEFAULT_SYNC_INTERVAL = 30 * 1000;
 
@@ -40,6 +43,6 @@ public class ApiService extends Service {
 
     private synchronized void syncData() {
         WeatherApi api = new WeatherApi();
-        api.getData();
+        weatherdata=api.getData();
     }
 }

@@ -21,6 +21,7 @@ public class WeatherApi {
                            public void onResponse(Call<WeatherModel> call, Response<WeatherModel> response) {
                                if (response.code() == 200) {
                                    WeatherData = response.body();
+                                   System.out.print(WeatherData.getIconUpdateTime());
                                }
                            }
 
