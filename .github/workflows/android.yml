@@ -8,9 +8,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - run: echo "The ${{ github.repository }} repository has been cloned."
@@ -26,6 +24,10 @@ jobs:
         run: chmod +x gradlew
       - run: echo "Building Debug APK."  
       - name: Build with Gradle
-        run: ./gradlew build
-      - run: echo "Build status report=${{ job.status }}."
+        run: gradlew assembleDebug
+      - name: upload apk as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: debug apk
+          path: app\build\outputs\apk\debug.apk
             
