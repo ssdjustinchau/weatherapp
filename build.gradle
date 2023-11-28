@@ -4,7 +4,11 @@ plugins {
     id 'com.android.library' version '7.4.0' apply false
 }
 
+<<<<<<< HEAD
 def generateVersionTxt() {
+=======
+task generateVersionTxt {
+>>>>>>> parent of 30e75b8 (fix build.gradle)
     doLast {
         file("./version.txt").text = android.defaultConfig.versionName
     }
