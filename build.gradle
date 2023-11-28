@@ -4,7 +4,7 @@ plugins {
     id 'com.android.library' version '7.4.0' apply false
 }
 
-task generateVersionTxt {
+def generateVersionTxt {
     doLast {
         file("./version.txt").text = android.defaultConfig.versionName
     }
