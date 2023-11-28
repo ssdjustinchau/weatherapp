@@ -31,4 +31,13 @@ jobs:
         with:
           name: my-artifact
           path: "app/build/outputs/apk/debug/app-debug.apk"
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: "app/build/outputs/apk/debug/app-debug.apk"
+          asset_name: "debug apk"
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "app"
             
