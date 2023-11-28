@@ -39,7 +39,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: "app/build/outputs/apk/debug/app-debug.apk"
           asset_name: "debug apk"
-          tag: ${{ github.ref }}
+          tag: "debug"
           overwrite: true
           body: "app"
             
