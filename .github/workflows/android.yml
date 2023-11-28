@@ -30,8 +30,8 @@ jobs:
         id: ff # Any id, to be used later to reference to files output
         with:
           args: "*.apk"
-- name: Print files
-  run: echo "${{ steps.ff.outputs.files }}"
+      - name: Print files
+        run: echo "${{ steps.ff.outputs.files }}"
       - name: upload apk as artifact
         uses: actions/upload-artifact@v3
         with:
