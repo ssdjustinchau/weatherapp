@@ -25,8 +25,6 @@ jobs:
       - run: echo "Building Debug APK."  
       - name: Build with Gradle
         run: ./gradlew assembleDebug
-      - name: Generate version.txt for Hub release
-        run: ./gradlew generateVersionTxt
       - name: Releasing using Hub
         uses: r0user/release-apk@main
         env:
