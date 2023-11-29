@@ -45,4 +45,7 @@ public class WeatherApi {
 
         return WeatherData;
     }
+    public WeatherModel getData() {
+        return getData("en");
+    }
 }

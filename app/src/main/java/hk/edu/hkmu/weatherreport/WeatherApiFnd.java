@@ -29,4 +29,7 @@ public class WeatherApiFnd {
 
         return WeatherData;
     }
+    public WeatherModelFnd getData() {
+        return getData("en");
+    }
 }
