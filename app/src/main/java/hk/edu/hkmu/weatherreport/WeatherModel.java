@@ -8,7 +8,6 @@ public class WeatherModel {
     public String warningMessage;
     public ArrayList<Integer> icon;
     public Date iconUpdateTime;
-    public Uvindex uvindex;
     public Date updateTime;
     public Temperature temperature;
     public String tcmessage;
@@ -124,27 +123,7 @@ public class WeatherModel {
         }
     }
 
-    public class Uvindex{
-        public ArrayList<Datum> data;
 
-        public ArrayList<Datum> getData() {
-            return data;
-        }
-
-        public void setData(ArrayList<Datum> data) {
-            this.data = data;
-        }
-
-        public String getRecordDesc() {
-            return recordDesc;
-        }
-
-        public void setRecordDesc(String recordDesc) {
-            this.recordDesc = recordDesc;
-        }
-
-        public String recordDesc;
-    }
 
     public Rainfall getRainfall() {
         return rainfall;
@@ -178,13 +157,7 @@ public class WeatherModel {
         this.iconUpdateTime = iconUpdateTime;
     }
 
-    public Uvindex getUvindex() {
-        return uvindex;
-    }
 
-    public void setUvindex(Uvindex uvindex) {
-        this.uvindex = uvindex;
-    }
 
     public Date getUpdateTime() {
         return updateTime;
