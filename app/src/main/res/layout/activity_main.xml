@@ -199,7 +199,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.66">
+        app:layout_constraintVertical_bias="0.70">
 
         <TextView
             android:id="@+id/Today"
@@ -212,17 +212,18 @@
             android:textSize="20sp"
             android:layout_marginStart="16sp"/>
 
-        <TextView
-            android:id="@+id/SevenDays"
+        <Button
+            android:id="@+id/nineDaysForecast"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16sp"
             android:layout_weight="1"
-            android:text="Next 7 Day >"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="20sp"
+            android:background="@android:color/transparent"
+            android:text="Next 9 Day >"
             android:textAlignment="textEnd"
-            android:layout_marginEnd="16sp"/>
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -238,6 +239,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.929" />
+        app:layout_constraintVertical_bias="0.99" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
