@@ -19,6 +19,7 @@
             android:label="@string/title_activity_settings" />
         <activity
             android:name=".AboutActivity"
+            android:label="@string/title_activity_about"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
