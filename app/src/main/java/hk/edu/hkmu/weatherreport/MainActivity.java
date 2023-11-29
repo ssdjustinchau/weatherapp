@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Set the title for the ActionBar
-        getSupportActionBar().setTitle("My Title");
+        getSupportActionBar().setTitle("Weather Report");
 
         // Enable the Up button
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
