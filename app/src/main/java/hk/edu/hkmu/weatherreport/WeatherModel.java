@@ -8,7 +8,7 @@ public class WeatherModel {
     public String warningMessage;
     public ArrayList<Integer> icon;
     public Date iconUpdateTime;
-    public String uvindex;
+    public Uvindex uvindex;
     public Date updateTime;
     public Temperature temperature;
     public String tcmessage;
@@ -19,15 +19,81 @@ public class WeatherModel {
     public Humidity humidity;
 
 
+
     public class Datum{
         public String unit;
         public String place;
         public int max;
         public String main;
         public int value;
+        public String desc;
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public String getPlace() {
+            return place;
+        }
+
+        public void setPlace(String place) {
+            this.place = place;
+        }
+
+        public int getMax() {
+            return max;
+        }
+
+        public void setMax(int max) {
+            this.max = max;
+        }
+
+        public String getMain() {
+            return main;
+        }
+
+        public void setMain(String main) {
+            this.main = main;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        public void setValue(int value) {
+            this.value = value;
+        }
+
+        public String getDesc() {
+            return desc;
+        }
+
+        public void setDesc(String desc) {
+            this.desc = desc;
+        }
     }
 
     public class Humidity{
+        public Date getRecordTime() {
+            return recordTime;
+        }
+
+        public void setRecordTime(Date recordTime) {
+            this.recordTime = recordTime;
+        }
+
+        public ArrayList<Datum> getData() {
+            return data;
+        }
+
+        public void setData(ArrayList<Datum> data) {
+            this.data = data;
+        }
+
         public Date recordTime;
         public ArrayList<Datum> data;
     }
@@ -40,6 +106,44 @@ public class WeatherModel {
     public class Temperature{
         public ArrayList<Datum> data;
         public Date recordTime;
+
+        public ArrayList<Datum> getData() {
+            return data;
+        }
+
+        public void setData(ArrayList<Datum> data) {
+            this.data = data;
+        }
+
+        public Date getRecordTime() {
+            return recordTime;
+        }
+
+        public void setRecordTime(Date recordTime) {
+            this.recordTime = recordTime;
+        }
+    }
+
+    public class Uvindex{
+        public ArrayList<Datum> data;
+
+        public ArrayList<Datum> getData() {
+            return data;
+        }
+
+        public void setData(ArrayList<Datum> data) {
+            this.data = data;
+        }
+
+        public String getRecordDesc() {
+            return recordDesc;
+        }
+
+        public void setRecordDesc(String recordDesc) {
+            this.recordDesc = recordDesc;
+        }
+
+        public String recordDesc;
     }
 
     public Rainfall getRainfall() {
@@ -74,11 +178,11 @@ public class WeatherModel {
         this.iconUpdateTime = iconUpdateTime;
     }
 
-    public String getUvindex() {
+    public Uvindex getUvindex() {
         return uvindex;
     }
 
-    public void setUvindex(String uvindex) {
+    public void setUvindex(Uvindex uvindex) {
         this.uvindex = uvindex;
     }
 

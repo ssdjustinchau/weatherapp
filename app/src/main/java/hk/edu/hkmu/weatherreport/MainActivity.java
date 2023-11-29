@@ -5,12 +5,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+
+import android.util.Log;
+import android.view.MenuItem;
+import android.widget.TextView;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;            // for Intent
 
+
 //app bar import
 import androidx.appcompat.widget.Toolbar;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         /*
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);*/
+
+        //multithreading api call test
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        scheduler.scheduleAtFixedRate(new ApiCall(), 30, 60, TimeUnit.SECONDS);
     }
 
     @Override
@@ -64,22 +82,28 @@ public class MainActivity extends AppCompatActivity {
     private Handler handler = new Handler(Looper.getMainLooper());
     private WeatherApi api = new WeatherApi();
     private WeatherModel weatherdata = new WeatherModel();
-    public void updateUI(){
-        weatherdata = api.getData();
+
+    public void updateUI() {
+        TextView textview = findViewById(R.id.temperature);
+
+//        Log.d("UPDATEUI",weatherdata.getTemperature().getData().get(0).getPlace());
+
+
     }
 
-    private class ComputeTask implements Runnable {  // A task that simulates a long job.
-        private long total = 0;
-        @Override
+    private class ApiCall implements Runnable {
+        private Runnable update = new Runnable() {
+            @Override
+            public void run() {
+                TextView temp = findViewById(R.id.temperature);
+                Log.d("MULTITHREAD", weatherdata.getIconUpdateTime().toString());
+                temp.setText(Integer.toString(weatherdata.getTemperature().getData().get(0).getValue()));
+            }
+        };
+
         public void run() {
-            handler.postDelayed(  // 2
-                    new Runnable() {  // 3
-                        @Override
-                        public void run() {  // 4
-                            updateUI();  // 5
-                        }
-                    },5000
-            );
+            weatherdata = api.getData();
+            MainActivity.this.runOnUiThread(update);
         }
     }
 }
