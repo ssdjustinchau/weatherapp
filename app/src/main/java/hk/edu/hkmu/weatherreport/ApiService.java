@@ -43,6 +43,6 @@ public class ApiService extends Service {
 
     private synchronized void syncData() {
         WeatherApi api = new WeatherApi();
-        weatherdata=api.getData();
+        weatherdata=api.getData("en");
     }
 }
