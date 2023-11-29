@@ -64,7 +64,9 @@ public class MainActivity extends AppCompatActivity {
                 //onBackPressed();
                 //return true;
             case R.id.action_home:
-                // do something
+                // Create an Intent to start MainActivity
+                Intent homeIntent = new Intent(this, MainActivity.class);
+                startActivity(homeIntent);
                 return true;
             case R.id.action_about:
                 // Create an Intent to start AboutActivity
@@ -72,7 +74,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(aboutIntent);
                 return true;
             case R.id.action_settings:
-                // do something
+                // Create an Intent to start SettingsActivity
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                startActivity(settingsIntent);
+                return true;
+            case R.id.action_exit:
+                // Exit the app
+                finishAffinity();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
