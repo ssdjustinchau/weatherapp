@@ -2,10 +2,15 @@ package hk.edu.hkmu.weatherreport;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -17,6 +22,7 @@ import android.content.Intent;            // for Intent
 
 //app bar import
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -65,16 +71,19 @@ public class MainActivity extends AppCompatActivity {
                 //return true;
             case R.id.action_home:
                 // Create an Intent to start MainActivity
+                handleVibrationPreference();
                 Intent homeIntent = new Intent(this, MainActivity.class);
                 startActivity(homeIntent);
                 return true;
             case R.id.action_about:
                 // Create an Intent to start AboutActivity
+                handleVibrationPreference();
                 Intent aboutIntent = new Intent(this, AboutActivity.class);
                 startActivity(aboutIntent);
                 return true;
             case R.id.action_settings:
                 // Create an Intent to start SettingsActivity
+                handleVibrationPreference();
                 Intent settingsIntent = new Intent(this, SettingsActivity.class);
                 startActivity(settingsIntent);
                 return true;
@@ -113,6 +122,21 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             weatherdata = api.getData("tc");
             MainActivity.this.runOnUiThread(update);
+        }
+    }
+
+    private void handleVibrationPreference() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean shouldVibrate = sharedPreferences.getBoolean("pref_key_vibration", true);
+        if (shouldVibrate) {
+            // Vibrate the device. You'll need the VIBRATE permission for this.
+            Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            if (Build.VERSION.SDK_INT >= 26) {
+                vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+                Log.d("Vibration", "Vibration started");
+            } else {
+                vibrator.vibrate(200);
+            }
         }
     }
 }

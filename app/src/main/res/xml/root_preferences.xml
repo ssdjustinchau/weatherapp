@@ -32,4 +32,14 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory app:title="@string/general_settings_header">
+
+        <!--app:title="Enable vibration on button click"-->
+        <SwitchPreferenceCompat
+            app:key="pref_key_vibration"
+            app:title="Enable vibration on click"
+            app:defaultValue="true" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
