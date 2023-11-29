@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         //multithreading api call test
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-        scheduler.scheduleAtFixedRate(new ApiCall(), 0, 60, TimeUnit.SECONDS);
+        scheduler.scheduleAtFixedRate(new ApiCall(), 30, 60, TimeUnit.SECONDS);
     }
 
     @Override
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 TextView temp = findViewById(R.id.temperature);
                 Log.d("MULTITHREAD", weatherdata.getIconUpdateTime().toString());
-                temp.setText(weatherdata.getTemperature().getData().get(0).getPlace());
+                temp.setText(Integer.toString(weatherdata.getTemperature().getData().get(0).getValue()));
             }
         };
 
