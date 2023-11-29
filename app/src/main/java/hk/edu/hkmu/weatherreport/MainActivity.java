@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
         public void run() {
-            weatherdata = api.getData("en");
+            weatherdata = api.getData("tc");
             MainActivity.this.runOnUiThread(update);
         }
     }

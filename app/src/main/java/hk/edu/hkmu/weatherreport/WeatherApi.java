@@ -12,7 +12,7 @@ public class WeatherApi {
     private WeatherModel WeatherData;
 
     public WeatherModel getData(String lang) {
-        if (!lang.equals("en")||!lang.equals("tc")||!lang.equals("sc"))
+        if (!lang.equals("en")&&!lang.equals("tc")&&!lang.equals("sc"))
             lang = "en";
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://data.weather.gov.hk/weatherAPI/opendata/")
@@ -20,7 +20,7 @@ public class WeatherApi {
                 .build();
         WeatherInterface RequestWeather = retrofit.create(WeatherInterface.class);
         try {
-            Call<WeatherModel> client = RequestWeather.getData("en");
+            Call<WeatherModel> client = RequestWeather.getData(lang);
             Response res = client.execute();
             Log.d("CALLBACK","url:"+res.raw().request().url());
             WeatherData =  (WeatherModel) res.body();
