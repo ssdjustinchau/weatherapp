@@ -10,6 +10,11 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import android.view.Menu;
+import android.view.MenuItem;
+import android.content.Intent;            // for Intent
+
+
 //app bar import
 import androidx.appcompat.widget.Toolbar;
 
@@ -32,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("My Title");
 
         // Enable the Up button
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Toolbar(cannot use)
         /*
@@ -45,14 +50,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.home:
+            //case android.R.id.home:
                 // Navigate back to previous screen
-                onBackPressed();
+                //onBackPressed();
+                //return true;
+            case R.id.action_home:
+                // do something
                 return true;
+            case R.id.action_about:
+                // Create an Intent to start AboutActivity
+                Intent aboutIntent = new Intent(this, AboutActivity.class);
+                startActivity(aboutIntent);
+                return true;
+            case R.id.action_settings:
+                // do something
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     private Handler handler = new Handler(Looper.getMainLooper());
