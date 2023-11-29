@@ -1,5 +1,6 @@
 package hk.edu.hkmu.weatherreport;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,6 +33,21 @@ public abstract class BaseActivity extends AppCompatActivity {
             case android.R.id.home:
                 // Navigate back to previous screen when Up button is clicked
                 onBackPressed();
+                return true;
+            case R.id.action_home:
+                // do something
+                return true;
+            case R.id.action_about:
+                // Create an Intent to start AboutActivity
+                Intent aboutIntent = new Intent(this, AboutActivity.class);
+                startActivity(aboutIntent);
+                return true;
+            case R.id.action_settings:
+                // do something
+                return true;
+            case R.id.action_exit:
+                // Exit the app
+                finishAffinity();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
