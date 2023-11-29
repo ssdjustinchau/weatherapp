@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         //multithreading api call test
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-        scheduler.scheduleAtFixedRate(new ApiCall(), 0, 10, TimeUnit.SECONDS);
+        scheduler.scheduleAtFixedRate(new ApiCall(), 0, 60, TimeUnit.SECONDS);
     }
 
     @Override
