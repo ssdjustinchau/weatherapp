@@ -78,6 +78,22 @@ public class WeatherModel {
     }
 
     public class Humidity{
+        public Date getRecordTime() {
+            return recordTime;
+        }
+
+        public void setRecordTime(Date recordTime) {
+            this.recordTime = recordTime;
+        }
+
+        public ArrayList<Datum> getData() {
+            return data;
+        }
+
+        public void setData(ArrayList<Datum> data) {
+            this.data = data;
+        }
+
         public Date recordTime;
         public ArrayList<Datum> data;
     }
@@ -110,6 +126,23 @@ public class WeatherModel {
 
     public class Uvindex{
         public ArrayList<Datum> data;
+
+        public ArrayList<Datum> getData() {
+            return data;
+        }
+
+        public void setData(ArrayList<Datum> data) {
+            this.data = data;
+        }
+
+        public String getRecordDesc() {
+            return recordDesc;
+        }
+
+        public void setRecordDesc(String recordDesc) {
+            this.recordDesc = recordDesc;
+        }
+
         public String recordDesc;
     }
 
