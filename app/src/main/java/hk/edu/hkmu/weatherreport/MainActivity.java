@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 
@@ -201,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 TextView temp = findViewById(R.id.temperature);
-                Log.d("MULTITHREAD", weatherdata.getIconUpdateTime().toString());
+//                Log.d("MULTITHREAD", weatherdata.getIconUpdateTime().toString());
 //                temp.setText(Integer.toString(weatherdata.getTemperature().getData().get(0).getValue()));
                 temp.setText(weatherdata.getTemperature().getData().get(0).getPlace());
             }

@@ -22,9 +22,9 @@ public class WeatherApi {
         try {
             Call<WeatherModel> client = RequestWeather.getData(lang);
             Response res = client.execute();
-            Log.d("CALLBACK","url:"+res.raw().request().url());
+//            Log.d("CALLBACK","url:"+res.raw().request().url());
             WeatherData =  (WeatherModel) res.body();
-            Log.d("CALLBACK","onresponse:"+WeatherData.getIconUpdateTime());
+//            Log.d("CALLBACK","onresponse:"+WeatherData.getIconUpdateTime());
         }catch (Exception e){
             e.printStackTrace();
         }
