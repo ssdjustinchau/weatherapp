@@ -9,10 +9,10 @@
 
 
     <TextView
-        android:id="@+id/banner"
+        android:id="@+id/DNT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sunny"
+        android:text="Thu Nov 23"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -26,29 +26,14 @@
     <ImageView
         android:id="@+id/bannerimg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="180dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2"
-        app:srcCompat="@drawable/sunny" />
-
-    <TextView
-        android:id="@+id/DNT"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Thu Nov 23"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.43" />
+        app:srcCompat="@drawable/pic50" />
 
     <TextView
         android:id="@+id/temperature"
@@ -57,13 +42,13 @@
         android:text="25°"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="63sp"
+        android:textSize="70sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.46" />
 
     <TextView
         android:id="@+id/HnLtemp"
@@ -78,7 +63,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.585" />
+        app:layout_constraintVertical_bias="0.555" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -89,7 +74,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.660">
+        app:layout_constraintVertical_bias="0.63">
 
         <TextView
             android:id="@+id/Today"
@@ -127,7 +112,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8">
+        app:layout_constraintVertical_bias="0.75">
 
         <LinearLayout
             android:layout_width="0dp"
