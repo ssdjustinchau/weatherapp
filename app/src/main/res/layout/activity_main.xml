@@ -38,9 +38,7 @@
         <ImageView
             android:id="@+id/bannerimg"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-
-            app:srcCompat="@drawable/pic50" />
+            android:layout_height="180dp" />
     </LinearLayout>
 
 

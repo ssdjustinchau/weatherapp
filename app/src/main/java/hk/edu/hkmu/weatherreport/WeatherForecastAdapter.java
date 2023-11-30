@@ -1,6 +1,5 @@
 package hk.edu.hkmu.weatherreport;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,26 +39,6 @@ public class WeatherForecastAdapter  extends BaseAdapter {
     @Override
     public long getItemId(int i) {
         return 0;
-    }
-
-
-
-
-    @SuppressLint("ResourceType")
-    public View getView2(int position, View convertView2, ViewGroup parent){
-        if (convertView2 == null) {  // if it's not recycled, initialize some attributes
-            final LayoutInflater layoutInflater = LayoutInflater.from(context);
-            convertView2 = layoutInflater.inflate(R.id.imglayout, null);
-        }
-
-        ImageView weatherIcon2 = convertView2.findViewById(R.id.bannerimg);
-        WeatherForecast forecast = (WeatherForecast) getItem(position);
-
-        int forecastIcon = forecast.getForecastIcon();
-        String forecastIconResourceName = "pic"+forecastIcon;
-        int forecastDrawableResource = convertView2.getContext().getResources().getIdentifier(forecastIconResourceName, "drawable", convertView2.getContext().getPackageName());
-        weatherIcon2.setImageResource(forecastDrawableResource);
-        return convertView2;
     }
 
     @Override

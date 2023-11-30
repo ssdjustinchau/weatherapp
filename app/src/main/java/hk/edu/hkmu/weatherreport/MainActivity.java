@@ -25,6 +25,7 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import android.view.Menu;
@@ -242,12 +243,18 @@ public class MainActivity extends AppCompatActivity {
                 TextView temp = findViewById(R.id.temperature);
                 TextView humidity = findViewById(R.id.humidity);
                 TextView rainfall = findViewById(R.id.rainfall);
-//                Log.d("MULTITHREAD", weatherdata.getIconUpdateTime().toString());
-//                temp.setText(Integer.toString(weatherdata.getTemperature().getData().get(0).getValue()));
+                ImageView bannerimg = findViewById(R.id.bannerimg);
+
                 String celsiusSymbol = "\u2103";
                 temp.setText(String.valueOf(weatherdata.getTemperature().getData().get(0).getValue()) + celsiusSymbol);
                 humidity.setText(String.valueOf(weatherdata.getHumidity().getData().get(0).getValue()) + "%");
                 rainfall.setText(String.valueOf(weatherdata.getRainfall().getData().get(0).getValue()) + "mm");
+
+                int weatherIcon = weatherdata.getIcon().get(0);
+                String forecastIconResourceName = "pic"+weatherIcon;
+                int forecastDrawableResource = getResources().getIdentifier(forecastIconResourceName, "drawable", getPackageName());
+                bannerimg.setImageResource(forecastDrawableResource);
+
             }
         };
 
