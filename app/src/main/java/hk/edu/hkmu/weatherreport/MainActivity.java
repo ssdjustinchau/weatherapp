@@ -43,11 +43,15 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import android.media.MediaPlayer;
+
 
 
 public class MainActivity extends AppCompatActivity {
     private Button nineDayForecastBtn;
     private WeatherForecasts weatherForecasts;
+
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         weatherForecasts = new WeatherForecasts();
+        mediaPlayer = MediaPlayer.create(this, R.raw.click_button);
 
         Thread loadWeatherForecastAPI = new Thread(new Runnable() {
             @Override
@@ -127,14 +132,6 @@ public class MainActivity extends AppCompatActivity {
         // Set the title for the ActionBar
         getSupportActionBar().setTitle("Weather Report");
 
-        // Enable the Up button
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        //Toolbar(cannot use)
-        /*
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);*/
-
         //multithreading api call test
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         scheduler.scheduleAtFixedRate(new ApiCall(), 0, 60, TimeUnit.SECONDS);
@@ -157,24 +154,28 @@ public class MainActivity extends AppCompatActivity {
                 //return true;
             case R.id.action_home:
                 // Create an Intent to start MainActivity
+                playSound();
                 handleVibrationPreference();
                 Intent homeIntent = new Intent(this, MainActivity.class);
                 startActivity(homeIntent);
                 return true;
             case R.id.action_about:
                 // Create an Intent to start AboutActivity
+                playSound();
                 handleVibrationPreference();
                 Intent aboutIntent = new Intent(this, AboutActivity.class);
                 startActivity(aboutIntent);
                 return true;
             case R.id.action_settings:
                 // Create an Intent to start SettingsActivity
+                playSound();
                 handleVibrationPreference();
                 Intent settingsIntent = new Intent(this, SettingsActivity.class);
                 startActivity(settingsIntent);
                 return true;
             case R.id.action_exit:
                 // Exit the app
+                handleVibrationPreference();
                 finishAffinity();
                 return true;
             default:
@@ -224,6 +225,24 @@ public class MainActivity extends AppCompatActivity {
                 vibrator.vibrate(200);
             }
         }
+    }
+
+    private void playSound() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean shouldPlaySound = sharedPreferences.getBoolean("pref_key_sound_effects", true);
+        if (shouldPlaySound && mediaPlayer != null) {
+            mediaPlayer.start();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        // Release the MediaPlayer when the activity is destroyed
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+        super.onDestroy();
     }
 }
 
