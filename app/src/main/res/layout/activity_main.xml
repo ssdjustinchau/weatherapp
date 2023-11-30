@@ -106,7 +106,7 @@
                 app:srcCompat="@drawable/rain" />
 
             <TextView
-                android:id="@+id/rain"
+                android:id="@+id/rainfall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="22%"
@@ -118,7 +118,7 @@
                 android:id="@+id/raintxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Rain"
+                android:text="Rainfall"
                 android:textAlignment="center"
                 android:textColor="@color/white"/>
 
@@ -173,7 +173,6 @@
                 android:id="@+id/humidity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="70%"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textStyle="bold" />

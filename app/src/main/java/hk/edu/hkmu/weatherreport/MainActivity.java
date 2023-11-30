@@ -39,6 +39,7 @@ import androidx.preference.PreferenceManager;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
@@ -52,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
     private WeatherForecasts weatherForecasts;
 
     private MediaPlayer mediaPlayer;
+
+    private TextView DNT;
+    private Handler dateTimehandler;
+    private Runnable updateTimeRunnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +133,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        DNT = findViewById(R.id.DNT);
+        dateTimehandler = new Handler();
+        updateTimeRunnable = new Runnable() {
+            @Override
+            public void run() {
+                updateTime();
+                dateTimehandler.postDelayed(this, 1000);
+            }
+        };
+
 
         // Set the title for the ActionBar
         getSupportActionBar().setTitle("Weather Report");
@@ -136,6 +151,18 @@ public class MainActivity extends AppCompatActivity {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         scheduler.scheduleAtFixedRate(new ApiCall(), 0, 60, TimeUnit.SECONDS);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startUpdatingTime();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopUpdatingTime();
     }
 
     @Override
@@ -200,10 +227,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 TextView temp = findViewById(R.id.temperature);
+                TextView humidity = findViewById(R.id.rainfall);
+                TextView rainfall = findViewById(R.id.rainfall);
 //                Log.d("MULTITHREAD", weatherdata.getIconUpdateTime().toString());
 //                temp.setText(Integer.toString(weatherdata.getTemperature().getData().get(0).getValue()));
                 String celsiusSymbol = "\u2103";
                 temp.setText(String.valueOf(weatherdata.getTemperature().getData().get(0).getValue()) + celsiusSymbol);
+                humidity.setText(String.valueOf(weatherdata.getHumidity().getData().get(0).getValue()) + "%");
+                rainfall.setText(String.valueOf(weatherdata.getRainfall().getData().get(0).getValue()) + "mm");
             }
         };
 
@@ -234,6 +265,20 @@ public class MainActivity extends AppCompatActivity {
         if (shouldPlaySound && mediaPlayer != null) {
             mediaPlayer.start();
         }
+    }
+
+    private void startUpdatingTime() {
+        handler.post(updateTimeRunnable);
+    }
+
+    private void stopUpdatingTime() {
+        handler.removeCallbacks(updateTimeRunnable);
+    }
+
+    private void updateTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd | hh:mm a", Locale.getDefault());
+        String currentTime = sdf.format(new Date());
+        DNT.setText(currentTime);
     }
 
     @Override

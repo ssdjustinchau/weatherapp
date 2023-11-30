@@ -101,6 +101,15 @@ public class WeatherModel {
         public ArrayList<Datum> data;
         public Date startTime;
         public Date endTime;
+
+        public ArrayList<Datum> getData() {
+            return data;
+        }
+
+        public void setData(ArrayList<Datum> data) {
+            this.data = data;
+        }
+
     }
     public class Temperature{
         public ArrayList<Datum> data;
