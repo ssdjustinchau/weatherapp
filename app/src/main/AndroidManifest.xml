@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -16,13 +15,17 @@
         android:theme="@style/Theme.WeatherReport"
         tools:targetApi="31">
         <activity
+            android:name=".MultimediaActivity"
+            android:exported="false"
+            android:label="@string/title_activity_multimedia" />
+        <activity
             android:name=".SettingsActivity"
             android:exported="false"
             android:label="@string/title_activity_settings" />
         <activity
             android:name=".AboutActivity"
-            android:label="@string/title_activity_about"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/title_activity_about" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
@@ -38,9 +41,7 @@
         </activity>
         <activity
             android:name=".NineDayForecastActivity"
-            android:allowEmbedded="true">
-
-        </activity>
+            android:allowEmbedded="true"></activity>
     </application>
 
 </manifest>

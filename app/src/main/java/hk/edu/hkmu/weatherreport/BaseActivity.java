@@ -63,6 +63,13 @@ public abstract class BaseActivity extends AppCompatActivity {
                 Intent aboutIntent = new Intent(this, AboutActivity.class);
                 startActivity(aboutIntent);
                 return true;
+            case R.id.action_multimedia:
+                // Create an Intent to start MultimediaActivity
+                playSound();
+                handleVibrationPreference();
+                Intent multimediaIntent = new Intent(this, MultimediaActivity.class);
+                startActivity(multimediaIntent);
+                return true;
             case R.id.action_settings:
                 // Create an Intent to start SettingsActivity
                 playSound();

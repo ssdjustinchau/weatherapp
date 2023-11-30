@@ -1,9 +1,10 @@
 package hk.edu.hkmu.weatherreport;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import androidx.appcompat.app.ActionBar;
+import hk.edu.hkmu.weatherreport.BaseActivity;
+
 
 public class AboutActivity extends BaseActivity  {
 
