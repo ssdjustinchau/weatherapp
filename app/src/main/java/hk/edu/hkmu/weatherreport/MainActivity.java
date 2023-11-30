@@ -202,7 +202,8 @@ public class MainActivity extends AppCompatActivity {
                 TextView temp = findViewById(R.id.temperature);
 //                Log.d("MULTITHREAD", weatherdata.getIconUpdateTime().toString());
 //                temp.setText(Integer.toString(weatherdata.getTemperature().getData().get(0).getValue()));
-                temp.setText(weatherdata.getTemperature().getData().get(0).getPlace());
+                String celsiusSymbol = "\u2103";
+                temp.setText(String.valueOf(weatherdata.getTemperature().getData().get(0).getValue()) + celsiusSymbol);
             }
         };
 
