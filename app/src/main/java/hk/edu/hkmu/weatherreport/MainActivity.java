@@ -227,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 TextView temp = findViewById(R.id.temperature);
-                TextView humidity = findViewById(R.id.rainfall);
+                TextView humidity = findViewById(R.id.humidity);
                 TextView rainfall = findViewById(R.id.rainfall);
 //                Log.d("MULTITHREAD", weatherdata.getIconUpdateTime().toString());
 //                temp.setText(Integer.toString(weatherdata.getTemperature().getData().get(0).getValue()));
