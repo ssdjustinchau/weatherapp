@@ -10,6 +10,14 @@
 
     <string name="general_settings_header">General</string>
 
+    <!-- About Screen -->
+    <string name="title_text">Weather Report Application</string>
+    <string name="description_text">
+        The application is developed using Android Studio. With this app, users can access a comprehensive weather forecast for the next 9 days in Hong Kong,
+        gaining valuable insights into the upcoming weather conditions.\n
+        Additionally, the app offers a range of customizable settings, allowing users to personalize their experience and tailor it to their specific preferences.\n
+        The following is our project group.</string>
+
     <!-- Messages Preferences -->
     <string name="signature_title">Your signature</string>
     <string name="reply_title">Default reply action</string>
