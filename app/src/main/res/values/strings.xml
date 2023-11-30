@@ -22,4 +22,7 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <!-- Nine Day Forecast Activity -->
+    <string name="nineDaysForecast_title">9 Days Forecast</string>
 </resources>

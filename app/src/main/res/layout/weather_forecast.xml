@@ -9,7 +9,7 @@
         android:id="@+id/weather_forecast_tittle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="9 days forecast"
+        android:text="@string/nineDaysForecast_title"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
