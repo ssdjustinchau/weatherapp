@@ -3,6 +3,7 @@ package hk.edu.hkmu.weatherreport;
 import android.content.Intent;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Build;
 import android.os.Vibrator;
@@ -17,9 +18,12 @@ import androidx.preference.PreferenceManager;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    private MediaPlayer mediaPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mediaPlayer = MediaPlayer.create(this, R.raw.click_button);
 
         // Show the ActionBar and include the Up button
         if (getSupportActionBar() != null) {
@@ -42,28 +46,33 @@ public abstract class BaseActivity extends AppCompatActivity {
             case android.R.id.home:
                 // Navigate back to previous screen when Up button is clicked
                 handleVibrationPreference();
+                playSound();
                 onBackPressed();
                 return true;
             case R.id.action_home:
                 // Create an Intent to start MainActivity
+                playSound();
                 handleVibrationPreference();
                 Intent homeIntent = new Intent(this, MainActivity.class);
                 startActivity(homeIntent);
                 return true;
             case R.id.action_about:
                 // Create an Intent to start AboutActivity
+                playSound();
                 handleVibrationPreference();
                 Intent aboutIntent = new Intent(this, AboutActivity.class);
                 startActivity(aboutIntent);
                 return true;
             case R.id.action_settings:
                 // Create an Intent to start SettingsActivity
+                playSound();
                 handleVibrationPreference();
                 Intent settingsIntent = new Intent(this, SettingsActivity.class);
                 startActivity(settingsIntent);
                 return true;
             case R.id.action_exit:
                 // Exit the app
+                handleVibrationPreference();
                 finishAffinity();
                 return true;
             default:
@@ -84,5 +93,23 @@ public abstract class BaseActivity extends AppCompatActivity {
                 vibrator.vibrate(200);
             }
         }
+    }
+
+    private void playSound() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean shouldPlaySound = sharedPreferences.getBoolean("pref_key_sound_effects", true);
+        if (shouldPlaySound && mediaPlayer != null) {
+            mediaPlayer.start();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        // Release the MediaPlayer when the activity is destroyed
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+        super.onDestroy();
     }
 }
