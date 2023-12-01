@@ -75,9 +75,9 @@ public class WeatherDB extends SQLiteOpenHelper {
          db.insert(TABLE_NAME, null, cv);
      }
 
-     public void deleteWeather(int forecastID){
+    public void deleteAllWeather() {
         SQLiteDatabase db = this.getWritableDatabase();
-         db.delete(TABLE_NAME, COLUMNS[0]	+ "	= ?", new String[] { String.valueOf(forecastID)});
-     }
+        db.delete(TABLE_NAME, null, null);
+    }
 
 }

@@ -98,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
 
                         //convert api respond to JSON object
                         try {
+
+                            weatherDB.deleteAllWeather();
+
                             JSONObject json = new JSONObject(apiResponse);
                             JSONArray forecastsArray = json.getJSONArray("weatherForecast");
                             for (int i = 0; i < forecastsArray.length(); i++) {
