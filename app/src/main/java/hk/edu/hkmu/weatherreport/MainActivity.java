@@ -144,6 +144,8 @@ public class MainActivity extends AppCompatActivity {
         nineDayForecastBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                playSound();
+                handleVibrationPreference();
                 Intent intent = new Intent(MainActivity.this, NineDayForecastActivity.class);
                 intent.putExtra("weatherForecasts", weatherForecasts);
                 startActivity(intent);

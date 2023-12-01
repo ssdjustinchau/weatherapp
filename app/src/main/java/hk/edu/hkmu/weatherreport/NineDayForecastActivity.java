@@ -3,6 +3,7 @@ package hk.edu.hkmu.weatherreport;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,10 +25,13 @@ public class NineDayForecastActivity extends AppCompatActivity {
     private Handler handler;
     private ListView list;
 
+    private MediaPlayer mediaPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.weather_forecast);
+        mediaPlayer = MediaPlayer.create(this, R.raw.click_button);
 
         weatherForecasts = (WeatherForecasts) getIntent().getSerializableExtra("weatherForecasts");
 
@@ -63,6 +67,24 @@ public class NineDayForecastActivity extends AppCompatActivity {
         }
     }
 
+    private void playSound() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean shouldPlaySound = sharedPreferences.getBoolean("pref_key_sound_effects", true);
+        if (shouldPlaySound && mediaPlayer != null) {
+            mediaPlayer.start();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        // Release the MediaPlayer when the activity is destroyed
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+        super.onDestroy();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -79,18 +101,28 @@ public class NineDayForecastActivity extends AppCompatActivity {
             //return true;
             case R.id.action_home:
                 // Create an Intent to start MainActivity
+                playSound();
                 handleVibrationPreference();
                 Intent homeIntent = new Intent(this, MainActivity.class);
                 startActivity(homeIntent);
                 return true;
             case R.id.action_about:
                 // Create an Intent to start AboutActivity
+                playSound();
                 handleVibrationPreference();
                 Intent aboutIntent = new Intent(this, AboutActivity.class);
                 startActivity(aboutIntent);
                 return true;
+            case R.id.action_multimedia:
+                // Create an Intent to start MultimediaActivity
+                playSound();
+                handleVibrationPreference();
+                Intent multimediaIntent = new Intent(this, MultimediaActivity.class);
+                startActivity(multimediaIntent);
+                return true;
             case R.id.action_settings:
                 // Create an Intent to start SettingsActivity
+                playSound();
                 handleVibrationPreference();
                 Intent settingsIntent = new Intent(this, SettingsActivity.class);
                 startActivity(settingsIntent);
@@ -98,6 +130,7 @@ public class NineDayForecastActivity extends AppCompatActivity {
             case R.id.action_exit:
                 // Exit the app
                 finishAffinity();
+                handleVibrationPreference();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
