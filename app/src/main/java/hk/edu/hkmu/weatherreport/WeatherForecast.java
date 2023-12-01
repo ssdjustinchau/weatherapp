@@ -3,6 +3,7 @@ package hk.edu.hkmu.weatherreport;
 import java.io.Serializable;
 
 public class WeatherForecast implements Serializable {
+    private String forecastID;
     private String forecastDate;
     private String week;
     private  String forecastWind;
@@ -15,10 +16,11 @@ public class WeatherForecast implements Serializable {
     private String PSR;
 
     // Constructor
-    public WeatherForecast(String forecastDate, String week, String forecastWind,
+    public WeatherForecast(String forecastID, String forecastDate, String week, String forecastWind,
                             String forecastWeather, String forecastMaxTemp, String forecastMinTemp,
                             String forecastMaxRH, String forecastMinRH, int forecastIcon, String PSR) {
 
+        this.forecastID = forecastID;
         this.forecastDate = forecastDate;
         this.week = week;
         this.forecastWind = forecastWind;
@@ -30,7 +32,7 @@ public class WeatherForecast implements Serializable {
         this.forecastIcon = forecastIcon;
         this.PSR = PSR;
     }
-
+    public String getForecastID() { return forecastID;  }
     public String getForecastDate() {
         return forecastDate;
     }

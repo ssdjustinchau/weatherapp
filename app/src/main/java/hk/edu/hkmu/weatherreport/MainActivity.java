@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
     private Handler dateTimehandler;
     private Runnable updateTimeRunnable;
 
+    private WeatherDB weatherDB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
 
         weatherForecasts = new WeatherForecasts();
         mediaPlayer = MediaPlayer.create(this, R.raw.click_button);
+
+        weatherDB = new WeatherDB(this);
 
         Thread loadWeatherForecastAPI = new Thread(new Runnable() {
             @Override
@@ -110,11 +114,14 @@ public class MainActivity extends AppCompatActivity {
                                 String PSR = forecastJson.getString("PSR");
 
                                 //create WeatherForecast object
-                                WeatherForecast forecast = new WeatherForecast(forecastDate, week, forecastWind, forecastWeather,
+                                WeatherForecast forecast = new WeatherForecast("0",forecastDate, week, forecastWind, forecastWeather,
                                         forecastMaxTemp, forecastMinTemp, forecastMaxRH, forecastMinRH, forecastIcon, PSR);
 
-                                weatherForecasts.addForecast(forecast);
+                                weatherDB.addWeather(forecast);
                             }
+
+                            weatherForecasts = weatherDB.getWeatherForecasts();
+
                         }catch (Exception e) {
                             e.printStackTrace();
                         }
