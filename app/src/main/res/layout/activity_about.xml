@@ -12,7 +12,7 @@
         android:text="@string/title_text"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/dark_purple"
+
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:text="@string/description_text"
         android:textSize="16sp"
-        android:textColor="@color/black"
+
         android:lineSpacingMultiplier="1.2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"
@@ -49,7 +49,6 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Name"
-                android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <TextView
@@ -58,7 +57,6 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Student ID"
-                android:textColor="@color/black"
                 android:textStyle="bold" />
         </TableRow>
 
@@ -75,14 +73,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Chau Chun Yu"
-                android:textColor="@color/black" />
+                 />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="12835633"
-                android:textColor="@color/black" />
+                 />
         </TableRow>
 
         <!-- Row for Member 2 -->
@@ -93,14 +91,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Law Ka Ho"
-                android:textColor="@color/black" />
+ />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="12850138"
-                android:textColor="@color/black" />
+ />
         </TableRow>
 
         <!-- Row for Member 3 -->
@@ -111,14 +109,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Lee Ho Ming"
-                android:textColor="@color/black" />
+ />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="12203875"
-                android:textColor="@color/black" />
+ />
         </TableRow>
 
         <!-- Row for Member 4 -->
@@ -129,14 +127,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Law Yuen Kat"
-                android:textColor="@color/black" />
+ />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="11230019"
-                android:textColor="@color/black" />
+ />
         </TableRow>
 
     </TableLayout>
